@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Open Seva — Real Growth At Zero Cost</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Open Seva — open-source company offering free services to small businesses. Modern, accessible, ChatGPT-style landing page." />
+  <style>
+    :root{
+      /* Palette derived to match logo's greys + teal accent */
+      --bg-1: #f6f7f8; /* pale background for contrast (light) */
+      --bg-dark: #0b1020; /* used for cards */
+      --muted:#3d4348;
+      --accent:#000000; /* teal accent to echo logo */
+      --accent-mid:#7f8a91; /* mid grey from logo */
+      --accent-dark:#2a2f33; /* dark charcoal from logo */
+      --glass: rgba(2,8,15,0.08);
+      --radius:14px;
+      --maxw:1100px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: light;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(900px 360px at 10% 20%, rgba(91, 101, 100, 0.06), transparent),
+                  radial-gradient(700px 300px at 90% 80%, rgba(120,130,140,0.03), transparent),
+                  linear-gradient(180deg, #ffffff 0%, #fbfdfe 100%);
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:28px 20px;
+    }
+
+    .container{max-width:var(--maxw);margin:0 auto}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;padding:10px 8px;margin-bottom:28px;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand-logo{width:52px;height:52px;border-radius:12px;object-fit:contain;background:linear-gradient(135deg,var(--accent-dark),var(--accent-mid));padding:6px}
+    .brand h1{font-size:18px;margin:0}
+    .brand small{display:block;color:var(--muted);font-size:12px}
+
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--accent-dark);text-decoration:none;font-weight:600}
+    nav a.cta{background:var(--accent);color:white;padding:8px 14px;border-radius:12px}
+
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;margin-bottom:36px
+    }
+
+    .card{
+      background: white;
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow: 0 6px 20px rgba(20,30,40,0.06);
+      border:1px solid rgba(12,18,24,0.03);
+    }
+
+    h1{font-size:28px;margin:0 0 8px}
+    .tagline{color:var(--muted);margin:6px 0 18px}
+
+    .home-hero{display:flex;gap:18px;align-items:center}
+    .hero-left{flex:1}
+    .logo-badge{display:flex;align-items:center;gap:12px}
+    .logo-badge img{width:84px;height:84px;border-radius:16px;object-fit:contain}
+    .logo-text{font-weight:800;font-size:22px}
+    .caption{color:var(--accent);font-weight:700;margin-top:6px}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .feat{background:linear-gradient(180deg,rgba(2,8,15,0.02), rgba(2,8,15,0.01));padding:14px;border-radius:12px;border:1px solid rgba(12,18,24,0.03)}
+    .feat h4{margin:0 0 6px;font-size:15px}
+    .feat p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Chat panel */
+    .chat{
+      height:540px;display:flex;flex-direction:column;gap:12px;position:relative;
+    }
+    .chat .messages{flex:1;overflow:auto;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fbfbfb,#ffffff);border:1px solid rgba(0,0,0,0.04)}
+    .msg{max-width:78%;margin-bottom:12px;padding:10px 12px;border-radius:12px;font-size:14px}
+    .msg.bot{background:linear-gradient(90deg, rgba(125, 125, 125, 0.09), rgba(127,138,145,0.03));border:1px solid rgba(0,191,166,0.08);color:#05332a}
+    .msg.user{margin-left:auto;background:linear-gradient(180deg, rgba(240,242,245,1), rgba(250,250,250,1));border:1px solid rgba(12,18,24,0.03);color:var(--accent-dark)}
+    .input-row{display:flex;gap:8px;padding:8px}
+    .input-row input{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(12,18,24,0.06);background:transparent;color:inherit}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
+
+    /* Sections */
+    section{margin-bottom:28px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .how p{color:var(--muted)}
+
+    footer{color:var(--muted);padding:18px 0;text-align:center}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .chat{height:420px}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      nav{display:none}
+      header{padding:8px 0}
+      .features{grid-template-columns:1fr}
+      body{padding:20px 14px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <!-- If you host the provided logo image alongside this HTML, it will display here -->
+        <img src="https://postimg.cc/mhz9dDdG" alt="Open Seva logo" class="brand-logo">
+        <div>
+          <h1>Open Seva</h1>
+          <small>Real Growth At Zero Cost</small>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#chat">Try Demo</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="card">
+          <div class="home-hero">
+            <div class="logo-badge">
+              <img src="https://postimg.cc/mhz9dDdG" alt="Open Seva logo">
+            </div>
+            <div class="hero-left">
+              <div class="logo-text">Open Seva</div>
+              <div class="caption">Real Growth At Zero Cost</div>
+              <p class="tagline">We help micro and small businesses grow with free, open-source websites, AI assistants and brand kits. Community-powered, privacy-first, and built to be self-hosted or run with minimal technical effort.</p>
+              <div style="margin-top:12px;display:flex;gap:12px">
+                <a class="btn" href="#contact">Request Free Help</a>
+                <a style="padding:10px 14px;border-radius:12px;background:transparent;border:1px solid rgba(12,18,24,0.06);color:var(--muted);text-decoration:none" href="#services">See Services</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="features" aria-hidden>
+            <div class="feat"><h4>Starter Websites</h4><p>Static, accessible sites you can host on GitHub Pages or Netlify — we scaffold and hand over the repo.</p></div>
+            <div class="feat"><h4>Chat Assistants</h4><p>Lightweight FAQ/chatbots configured for your business; privacy-first and easily customizable.</p></div>
+            <div class="feat"><h4>Brand Essentials</h4><p>Logo, color palette, and copy templates so you look professional from day one.</p></div>
+          </div>
+        </div>
+
+        <aside class="card chat" id="chat">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-mid));display:flex;align-items:center;justify-content:center;color:white;font-weight:800">AI</div>
+            <div>
+              <div style="font-weight:700">Open Seva Assistant</div>
+              <div style="font-size:12px;color:var(--muted)">Demo conversation — friendly & privacy-aware</div>
+            </div>
+          </div>
+
+          <div class="messages" id="messages" aria-live="polite">
+            <div class="msg bot">Hello! 👋 I'm the Open Seva Assistant. Tell me about your business and which service you'd like — website, logo or a small chatbot?</div>
+          </div>
+
+          <form id="chatForm" class="input-row" onsubmit="return false;">
+            <input id="chatInput" placeholder="Ask for a website, logo, or chatbot..." aria-label="Chat input">
+            <button id="sendBtn" class="btn">Send</button>
+          </form>
+        </aside>
+      </div>
+
+      <section id="about" class="card how">
+        <h3>About Open Seva</h3>
+        <p>Open Seva is a community-driven open-source collective that helps micro and small businesses get modern digital tools at zero cost. We prioritize privacy, long-term maintainability, and documentation so owners can run and update their assets independently.</p>
+
+        <div class="grid-2" style="margin-top:14px">
+          <div>
+            <h4 style="margin-top:0">Our Values</h4>
+            <ul style="color:var(--muted)">
+              <li>Open-source & transparent — everything we produce is public.</li>
+              <li>Privacy-first by design — minimal data collection and clear opt-ins.</li>
+              <li>Community-powered — volunteers, contributors, and donors keep the project running.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="margin-top:0">Founders</h4>
+            <div style="color:var(--muted);margin-top:8px">
+              <strong>Tharun Tripuragiri</strong> — Community & Outreach. Asha coordinates contributors, volunteer matches, and local partnerships to get help to businesses in need.
+              <br><br>
+              <strong>Jagan Tripuragiri</strong> — Tech & Engineering. Jagan builds the starter templates, automations and assists with deployments and technical documentation.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="card">
+        <h3>Services we offer</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px">
+          <div style="background:linear-gradient(180deg,rgba(240,242,245,1),#ffffff);padding:12px;border-radius:12px;border:1px solid rgba(12,18,24,0.03)"><strong>Site + Hosting</strong><div style="color:var(--muted)">Static + GitHub Pages setup with easy editing docs</div></div>
+          <div style="background:linear-gradient(180deg,rgba(240,242,245,1),#ffffff);padding:12px;border-radius:12px;border:1px solid rgba(12,18,24,0.03)"><strong>AI Assistants</strong><div style="color:var(--muted)">Small, local-first chat configs for common questions and simple tasks</div></div>
+          <div style="background:linear-gradient(180deg,rgba(240,242,245,1),#ffffff);padding:12px;border-radius:12px;border:1px solid rgba(12,18,24,0.03)"><strong>Brand Pack</strong><div style="color:var(--muted)">Logo, banners, and copy templates</div></div>
+        </div>
+      </section>
+
+      <section id="contact" class="card">
+        <h3>Get help — request form</h3>
+        <p style="color:var(--muted);margin-top:6px">Fill the form and we'll match you with a volunteer or contributor. (This is a demo — replace the Google Form link below with your real one.)</p>
+        <form id="contactForm" style="margin-top:12px;display:grid;gap:10px">
+          <input id="name" placeholder="Your name / Business name" style="padding:12px;border-radius:10px;border:1px solid rgba(12,18,24,0.06);background:transparent;color:inherit">
+          <input id="email" placeholder="Email (for follow-up)" style="padding:12px;border-radius:10px;border:1px solid rgba(12,18,24,0.06);background:transparent;color:inherit">
+          <textarea id="needs" rows="4" placeholder="What do you need? (website, chatbot, logo...)" style="padding:12px;border-radius:10px;border:1px solid rgba(12,18,24,0.06);background:transparent;color:inherit"></textarea>
+          <div style="display:flex;gap:10px">
+            <button class="btn" type="button" id="reqBtn">Submit Request</button>
+            <a class="btn" style="background:transparent;color:var(--accent-dark);border:1px solid rgba(16, 28, 39, 0.06);display:inline-flex;align-items:center;padding:10px 14px;border-radius:12px;text-decoration:none" href="https://forms.gle/your-form-id" target="_blank">Open Google Form</a>
+          </div>
+        </form>
+      </section>
+
+      <footer>
+        <div style="max-width:var(--maxw);margin:0 auto">Made with ❤️ by the Open Seva community — <small style="color:var(--muted)">Free for micro & small businesses</small></div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Simple demo chat behavior (client-side only)
+    const messages = document.getElementById('messages');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    chatForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if(!text) return;
+      appendMessage(text,'user');
+      chatInput.value='';
+      sendBtn.disabled=true;
+      const loader = document.createElement('div');
+      loader.className='msg bot';
+      loader.textContent='Thinking...';
+      messages.appendChild(loader);
+      messages.scrollTop = messages.scrollHeight;
+
+      setTimeout(()=>{
+        loader.remove();
+        const reply = generateReply(text);
+        appendMessage(reply,'bot');
+        sendBtn.disabled=false;
+      }, 700 + Math.random()*900);
+    });
+
+    function appendMessage(text, who){
+      const el = document.createElement('div');
+      el.className = 'msg '+(who==='bot' ? 'bot' : 'user');
+      el.textContent = text;
+      messages.appendChild(el);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function generateReply(userText){
+      const lc = userText.toLowerCase();
+      if(lc.includes('website')) return 'We can scaffold a starter static site and push it to GitHub Pages. Which pages do you need (home, about, contact)?';
+      if(lc.includes('logo')) return 'We can design a simple logo and color palette. Tell me 2 words that describe your brand.';
+      if(lc.includes('chat')) return 'We offer a lightweight assistant for FAQs. Do you have common questions we should include?';
+      if(lc.includes('pricing')||lc.includes('cost')) return 'Core services are free; optional sponsored premium support is available.';
+      return "Thanks — one of our volunteers will follow up. You can also open the Google Form link on this page to submit a full request.";
+    }
+
+    document.getElementById('reqBtn').addEventListener('click', ()=>{
+      const n = document.getElementById('name').value.trim();
+      const e = document.getElementById('email').value.trim();
+      const needs = document.getElementById('needs').value.trim();
+      if(!n||!e||!needs){
+        alert('Please fill name, email and describe your needs — this is a demo form.');
+        return;
+      }
+      alert('Thanks '+n+"! Your request has been recorded (demo). We'll follow up on "+e+".");
+      document.getElementById('contactForm').reset();
+    });
+  </script>
+</body>
+</html>
